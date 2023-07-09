@@ -1,0 +1,29 @@
+<h1>Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item name</th>
+      <th>Item path</th>
+      <th>Item type</th>
+      <th>Item create time</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @files.each do |file| %>
+    <tr>
+      <td><%= link_to file.item_name, wfile_path(file) %></td>
+      <td><%= file.item_path %></td>
+      <td><%= file.item_type %></td>
+      <td>
+        <time datetime=<%= file.formatted_created_at%>>
+          <%= file.formatted_created_at %>
+        </time>
+      </td>
+      <td>
+        <%= link_to 'edit', edit_wfile_url(file) %>
+        <%= link_to 'delete', wfile_path(file), data: {"turbo-method": :delete, "turbo-confirm": 'Are you sure?'}  %>
+      </td>
+    </tr>
+  <% end %>
+</table>

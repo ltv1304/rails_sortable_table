@@ -1,0 +1,35 @@
+<%= render 'share/errors', object: @file%>
+<%= form_with model: @file, url: form_path, data: { turbo: false } do |f| %>
+  <div class='mb-3 row'>
+    <div class='col-sm-2 col-form-label'>
+      <%= f.label :item_name %>
+    </div>
+
+    <div class='col-sm-10'>
+      <%= f.text_field :item_name, placeholder: "Новый файл", class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class='mb-3 row'>
+    <div class='col-sm-2 col-form-label'>
+      <%= f.label :parent %>
+    </div>
+
+    <div class='col-sm-10'>
+      <%= f.text_field :parent, placeholder: "Родительская директория", class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class='mb-3 row'>
+    <div class='col-sm-2 col-form-label'>
+      <%= f.label :item_type %>
+    </div>
+    
+    <div class='col-sm-10'>
+      <%= f.select :item_type, Wfile.item_types.keys,{}, class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= f.submit "Создать", class: 'btn btn-primary'  %>
+
+<% end %>
