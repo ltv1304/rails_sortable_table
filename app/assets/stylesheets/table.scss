@@ -1,0 +1,46 @@
+.table-sortable > thead > tr > th {
+    cursor: pointer;
+    position: relative;
+}
+
+.table-sortable > thead > tr > th:after,
+.table-sortable > thead > tr > th:after,
+.table-sortable > thead > tr > th:after {
+    content: ' ';
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    right: 10px;
+    top: 16px;
+    transform: rotate(-45deg);
+}
+
+.table-sortable > thead > tr > th:after {
+    background: linear-gradient(45deg, #ccc 0, #ccc 45%, transparent 45%, transparent 55%, #ccc 55%, #ccc 100%);
+
+}
+
+.table-sortable > thead > tr > th:hover:after {
+    background: linear-gradient(45deg, #888 0, #888 45%, transparent 45%, transparent 55%, #888 55%, #888 100%);
+}
+
+.table-sortable > thead > tr > th.asc:after {
+    background: linear-gradient(45deg, transparent 0%, transparent 55%, #333 55%, #333 100%);
+}
+.table-sortable > thead > tr > th.asc:hover:after {
+    background: linear-gradient(45deg, transparent 0%, transparent 55%, #888 55%, #888 100%);
+}
+
+.table-sortable > thead > tr > th.desc:after {    
+    background: linear-gradient(45deg, #333 0, #333 45%, transparent 45%, transparent 100%);
+}
+
+.table-sortable > thead > tr > th.desc:hover:after {
+    background: linear-gradient(45deg, #888 0, #888 45%, transparent 45%, transparent 100%);
+}
+.sortable {
+  display: block;
+  height: 100%;
+  width: 100%;
+  color: red;
+}

@@ -1,10 +1,9 @@
-<h1><%= @file.item_path %></h1>
+<h1><%= @file.name %></h1>
 
 <table>
   <thead>
     <tr>
       <th>Item name</th>
-      <th>Item path</th>
       <th>Item type</th>
       <th>Item create time</th>
     </tr>
@@ -12,17 +11,16 @@
   <tbody>
   <% @content.each do |file| %>
     <tr>
-      <td><%= file.item_name %></td>
-      <td><%= file.item_path %></td>
-      <td><%= file.item_type %></td>
+      <td><%= file.name %></td>
+      <td><%= file.type %></td>
       <td>
         <time datetime=<%= file.formatted_created_at%>>
           <%= file.formatted_created_at %>
         </time>
       </td>
       <td>
-        <%= link_to 'edit', edit_file_path(file.item_path) %>
-        <%= link_to 'delete', file_path(file.item_path), data: {"turbo-method": :delete, "turbo-confirm": 'Are you sure?'}  %>
+        <%= link_to 'edit', edit_wfile_path(file) %>
+        <%= link_to 'delete', wfile_path(file), data: {"turbo-method": :delete, "turbo-confirm": 'Are you sure?'}  %>
       </td>
     </tr>
   <% end %>

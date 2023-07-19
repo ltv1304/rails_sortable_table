@@ -2,6 +2,7 @@ class WfilesController < ApplicationController
   before_action :set_resourse, only: %i[show destroy edit update]
 
   def index
+    ap params
     @files = Wfile.all
   end
 
@@ -35,7 +36,8 @@ class WfilesController < ApplicationController
   end
 
   def show
-    @content = Wfile.where parent: @file.id
+    ap @file.children
+    @content = @file.children
   end
 
   private
@@ -45,6 +47,6 @@ class WfilesController < ApplicationController
   end
 
   def set_resourse
-    @file = Wfile.find params[:id]
+    @file = Wfile.find(params[:id])
   end
 end

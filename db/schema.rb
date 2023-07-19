@@ -12,13 +12,14 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_07_09_180602) do
   create_table "wfiles", force: :cascade do |t|
-    t.string "item_name"
-    t.string "item_path"
-    t.integer "item_type"
-    t.integer "parent"
+    t.string "name"
+    t.boolean "is_dir"
     t.string "owner"
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_wfiles_on_parent_id"
   end
 
+  add_foreign_key "wfiles", "wfiles", column: "parent_id"
 end
