@@ -2,27 +2,15 @@
 
 <table class='table table-bordered table-sortable'>
   <thead>
-    <tr data-controller='sort'
-        data-action='column:clear->sort#clear'
-        data-sort-dir-class='asc desc'>
-      <th data-sort-target="column" 
-          data-controller='column' 
-          data-action='click->column#next'
-          data-column-dir-class='asc desc'>
-          <%# link_to 'Item name', wfiles_path(q: 'test'), class: 'sortable' %>
-          Item name 
+    <tr>
+      <th class=<%= sort_class 'name', @sort_params %> > 
+          <%= sort_link 'Item name', 'name', @sort_params %>
       </th>
-      <th data-sort-target="column" 
-          data-controller='column' 
-          data-action='click->column#next'
-          data-column-dir-class='asc desc'>
-          Item type
+      <th class=<%= sort_class 'type', @sort_params %> >
+          <%= sort_link 'Item type', 'type', @sort_params %>
       </th>
-      <th data-sort-target="column" 
-          data-controller='column' 
-          data-action='click->column#next'
-          data-column-dir-class='asc desc'>
-          Item create time
+      <th class=<%= sort_class 'created_at', @sort_params %> >
+          <%= sort_link 'Item create time', 'created_at', @sort_params %>
       </th>
     </tr>
   </thead>
@@ -30,7 +18,7 @@
   <% @files.each do |file| %>
     <tr>
       <td><%= link_to file.name, wfile_path(file) %></td>
-      <td><%= file.type %></td>
+      <td><%= file.is_dir %></td>
       <td>
         <time datetime=<%= file.formatted_created_at%>>
           <%= file.formatted_created_at %>

@@ -1,14 +1,11 @@
 class Wfile < ApplicationRecord
-#  before_validation :make_path
-  #after_initialize :init
   has_many :children, class_name: 'Wfile',
                       foreign_key: 'parent_id'
 
-  belongs_to :manager, class_name: 'Wfile', optional: true
+  belongs_to :parent, class_name: 'Wfile', optional: true
 
   enum :type, %i[dir file]
   validates :name, presence: true
-#  validates :path, uniqueness: true
 
   def formatted_created_at
     created_at.strftime('%d.%m.%Y %H:%M:%S')
@@ -24,9 +21,4 @@ class Wfile < ApplicationRecord
       self.path = "#{parent.path}/#{name}"
     end
   end
-
-  #def init
-  #  self.number  ||= 0.0
-  #  self.address ||= build_address
-  #end
 end

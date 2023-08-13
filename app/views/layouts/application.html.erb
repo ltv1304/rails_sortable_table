@@ -16,7 +16,9 @@
         <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center md-md-0">
             <li><%= link_to 'Home', wfiles_path, class:"nav-link px-2 text-white" %></li>
-            <li><%= link_to 'New file', new_wfile_path, class:"nav-link px-2 text-white" %></li>
+            <%= content_for?(:create_link) ? yield(:create_link) : '' %>
+            <li><%= link_to 'Test page', ex_path, class:"nav-link px-2 text-white" %></li>
+            <%= content_for?(:create_link) ? yield(:create_link) : '' %>
           </ul>
         </nav>
       </div>

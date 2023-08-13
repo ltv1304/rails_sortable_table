@@ -4,7 +4,8 @@ class CreateWfiles < ActiveRecord::Migration[7.0]
       t.string :name
       t.boolean :is_dir
       t.string :owner
-      t.references :parent, foreign_key: { to_table: :wfiles }
+      t.integer :parent_id
+      t.integer :child_id
 
       t.timestamps
     end

@@ -1,3 +1,15 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
-@import 'table'
+@import 'table';
+
+
+.pannel_container {
+  background-color: #f0f0f0;
+  height: 800px;
+}
+
+.pannel {
+  background-color: white;
+  width: 100%;
+  height: 30%;
+}

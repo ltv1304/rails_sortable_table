@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'wfiles#index'
   resources :wfiles
+  get 'ex', to: 'wfiles#ex'
   # Defines the root path route ("/")
   # root "articles#index"
 end

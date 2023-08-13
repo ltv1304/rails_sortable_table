@@ -16,10 +16,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_09_180602) do
     t.boolean "is_dir"
     t.string "owner"
     t.integer "parent_id"
+    t.integer "child_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["parent_id"], name: "index_wfiles_on_parent_id"
   end
 
-  add_foreign_key "wfiles", "wfiles", column: "parent_id"
 end

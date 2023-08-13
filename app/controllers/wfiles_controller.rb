@@ -1,18 +1,24 @@
 class WfilesController < ApplicationController
+  include Sortabl
+
   before_action :set_resourse, only: %i[show destroy edit update]
+  before_action :set_scope, only: :index
 
   def index
-    ap params
-    @files = Wfile.all
+    @sort_params = params[:sort]
   end
 
   def new
-    @file = Wfile.new
+    ap params[:parent]
+    @resourse = Wfile.new
+    @resourse.parent = Wfile.find(params[:parent])
+    ap @resourse
   end
 
   def create
-    @file = Wfile.new files_params
-    if @file.save
+    ap params
+    @resourse = Wfile.new files_params
+    if @resourse.save
       flash[:success] = 'File created!'
       redirect_to wfiles_path
     else
@@ -21,7 +27,7 @@ class WfilesController < ApplicationController
   end
 
   def update
-    if @file.update files_params
+    if @resourse.update files_params
       flash[:success] = 'File updated!'
       redirect_to wfiles_path
     else
@@ -30,23 +36,29 @@ class WfilesController < ApplicationController
   end
 
   def destroy
-    @file.destroy
+    @resourse.destroy
     flash[:success] = 'File deleted!'
     redirect_to wfiles_path
   end
 
   def show
-    ap @file.children
-    @content = @file.children
+    @content = @resourse.children
   end
 
+  def ex
+  end
+ 
   private
+
+  def set_scope
+    @files = Wfile.all
+  end
 
   def files_params
     params.require(:wfile).permit(:item_name, :parent, :item_type)
   end
 
   def set_resourse
-    @file = Wfile.find(params[:id])
+    @resourse = Wfile.find(params[:id])
   end
 end

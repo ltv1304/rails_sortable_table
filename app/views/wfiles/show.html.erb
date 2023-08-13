@@ -1,4 +1,8 @@
-<h1><%= @file.name %></h1>
+<% content_for :create_link do %>
+  <li><%= link_to 'New file', new_wfile_path(parent: @resourse.id), class:"nav-link px-2 text-white" %></li>
+<% end %>
+
+<h1><%= @resourse.name %></h1>
 
 <table>
   <thead>
